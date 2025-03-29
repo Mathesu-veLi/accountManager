@@ -23,15 +23,15 @@ while True:
         case 1:
             website_name = str(input('Enter the name of the website where you registered your account: '))
             username = str(input('Enter a name to the user: '))
-            registred_email = str(input('Enter the email address you registered on this website: '))
-            registred_password = str(input('Enter the password you entered: '))
+            registered_email = str(input('Enter the email address you registered on this website: '))
+            registered_password = str(input('Enter the password you entered: '))
 
             manage_accounts.save_account(
                 accounts_folder_path,
                 website_name,
                 username,
-                registred_email,
-                registred_password)
+                registered_email,
+                registered_password)
 
             os.system("clear||cls")
             print('Account registered successfully!')
@@ -81,7 +81,7 @@ while True:
                 os.system("clear||cls")
                 print('Account data log successfully deleted', '\n')
             except FileNotFoundError:
-                print('Register an account to delete a registred account', '\n')
+                print('Register an account to delete a registered account', '\n')
         case 4:
             break
     input('Press ENTER.')

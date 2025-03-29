@@ -2,22 +2,22 @@ import os
 import json
 
 
-def save_account(account_folder_path: str, website_name: str, username: str, registred_email: str, registred_password: str):
+def save_account(account_folder_path: str, website_name: str, username: str, registered_email: str, registered_password: str):
     """Saves the account data in a json file with the name of the website where the account was registered
 
     Args:
         account_folder_path (str): Name of the folder in which the account is saved
         website_name (str): name of the website where the account was created
         username (str): name of the user registered on the site
-        registred_email (str): email address registered on the site
-        registred_password (str): password registered on the site
+        registered_email (str): email address registered on the site
+        registered_password (str): password registered on the site
     """
 
     data_registered_on_the_website = {
         website_name: {
             username: {
-                'email': registred_email,
-                'password': registred_password
+                'email': registered_email,
+                'password': registered_password
             },
         },
     }
