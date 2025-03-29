@@ -14,18 +14,21 @@ def save_account(account_folder_path: str, website_name: str, username: str, reg
     """
 
     data_registered_on_the_website = {
-        'website': website_name,
-        'username': username,
-        'email': registred_email,
-        'password': registred_password
+        website_name: {
+            username: {
+                'email': registred_email,
+                'password': registred_password
+            },
+        },
     }
 
+    openTextMode: str;
     try:
         os.mkdir(account_folder_path)
     except FileExistsError:
         pass
     finally:
-        with open(f'{account_folder_path}/{website_name}.json', '+w', encoding='utf-8') as file:
+        with open(f'{account_folder_path}/{website_name}.json', 'w', encoding='utf-8') as file:
             json.dump(data_registered_on_the_website, file)
 
 
