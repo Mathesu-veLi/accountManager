@@ -1,5 +1,6 @@
 import os
 from modules import utils, manage_accounts
+from time import sleep
 
 
 print('Welcome to the account manager!', '\n')
@@ -14,6 +15,7 @@ while True:
     while option > 4 or option < 1:
         print('Type a number from 1 to 3')
         option = utils.validate_number('Type an option: ')
+    os.system("clear||cls")
 
     accounts_folder_path = os.path.join('./', 'accounts')
 
@@ -29,7 +31,9 @@ while True:
                 registred_email,
                 registred_password)
 
-            print('Account registered successfully')
+            os.system("clear||cls")
+            print('Account registered successfully!')
+            
         case 2:
             print('Saved accounts: ')
 
@@ -47,10 +51,12 @@ while True:
                         break
 
                     print('Enter a valid number!')
-
+                    
+                os.system("clear||cls")
                 manage_accounts.read_accounts(accounts_folder_path, website_number)
             except FileNotFoundError:
                 print('Register an account to view registered accounts', '\n')
+            
         case 3:
             try:
                 files_count = utils.list_and_enumerate_files(accounts_folder_path)
@@ -70,11 +76,13 @@ while True:
                 manage_accounts.delete_accounts(
                     accounts_folder_path,
                     website_number)
-
+                os.system("clear||cls")
                 print('Account data log successfully deleted', '\n')
             except FileNotFoundError:
                 print('Register an account to delete a registred account', '\n')
         case 4:
             break
+    input('Press ENTER.')
+    os.system("clear||cls")
 
 print('\n', 'Come back often!')
