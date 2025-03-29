@@ -31,7 +31,7 @@ def list_and_enumerate_files(path):
     files_count = -1
 
     for iterator, file_name in enumerate(listdir(path)):
-        print(f'{iterator}: {file_name.replace('.json', '')}')
+        print(f"{iterator}: {file_name.replace('.json', '')}")
         files_count += 1
 
     return files_count
