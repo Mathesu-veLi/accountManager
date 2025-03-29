@@ -14,26 +14,30 @@ def save_account(account_folder_path: str, website_name: str, username: str, reg
     """
 
     data_registered_on_the_website = {
-        website_name: {
-            username: {
-                'email': registered_email,
-                'password': registered_password
-            },
+        username: {
+            'email': registered_email,
+            'password': registered_password
         },
     }
+    
 
     openTextMode: str;
     try:
         os.mkdir(account_folder_path)
-    except FileExistsError:
-        pass
-    finally:
         with open(f'{account_folder_path}/{website_name}.json', 'w', encoding='utf-8') as file:
             json.dump(data_registered_on_the_website, file)
+    except FileExistsError:
+        with open(f'{account_folder_path}/{website_name}.json', 'r', encoding='utf-8') as file:
+            data = json.load(file)
+            data[website_name][username] = {
+                'email': registered_email,
+                'password': registered_password
+            }
+            with open(f'{account_folder_path}/{website_name}.json', 'w', encoding='utf-8') as file:
+                json.dump(data, file)
+        
 
 
-def read_accounts(account_folder_path: str, website_number: int):
-    """Reads the json file indicated by website_number
 
     Args:
         account_folder_path (str): Path to search for account files
