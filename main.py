@@ -22,12 +22,14 @@ while True:
     match(option):
         case 1:
             website_name = str(input('Enter the name of the website where you registered your account: '))
+            username = str(input('Enter a name to the user: '))
             registred_email = str(input('Enter the email address you registered on this website: '))
             registred_password = str(input('Enter the password you entered: '))
 
             manage_accounts.save_account(
                 accounts_folder_path,
                 website_name,
+                username,
                 registred_email,
                 registred_password)
 
