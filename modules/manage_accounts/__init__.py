@@ -1,6 +1,6 @@
 import os
 import json
-
+from ..utils import custom_validate_number
 
 def save_account(account_folder_path: str, website_name: str, username: str, registered_email: str, registered_password: str):
     """Saves the account data in a json file with the name of the website where the account was registered
@@ -37,22 +37,30 @@ def save_account(account_folder_path: str, website_name: str, username: str, reg
                 json.dump(data, file)
         
 
-
-
+def show_accounts(account_folder_path: str, website_number: int):
+    """Shows the accounts of a specific website
+    
     Args:
         account_folder_path (str): Path to search for account files
         website_number (int): Number that the website appears in the file search system, used to identify it
     """
-
-    for iterator,  file_name in enumerate(os.listdir(account_folder_path)):
+    website_name = None
+    data = None
+    for iterator, file_name in enumerate(os.listdir(account_folder_path)):
         if iterator == website_number:
+            website_name = file_name.removesuffix('.json')
+            
             with open(f'{account_folder_path}/{file_name}', 'r', encoding='utf-8') as file:
                 data = json.load(file)
 
-                print('\n', f"{data['website']} - {data['username']}".center(55))
-                print(data['email'].ljust(35), end='')
-                print(data['password'].rjust(20), '\n')
-
+                for iterator, key in enumerate(data.keys()):
+                    print(f"{iterator}: {key}")
+                    
+                    
+    account_number = custom_validate_number('Enter the number of the site you want to see your account details for: ', iterator)
+    
+    account_data = get_account(data, account_number)
+    show_account(account_data[0], website_name, account_data[1])
 
 def delete_accounts(account_folder_path: str, website_number: int):
     """Deletes the json file indicated by website_number
