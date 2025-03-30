@@ -62,6 +62,25 @@ def show_accounts(account_folder_path: str, website_number: int):
     account_data = get_account(data, account_number)
     show_account(account_data[0], website_name, account_data[1])
 
+def get_account(data, account_number: int):
+    """Retrieves the account data for a specific user
+    
+    Args:
+        data (dict): Dictionary containing the account data
+        account_number (int): The number of the account to retrieve
+    Returns:
+        tuple: Tuple containing the account data and the username
+        If the account number does not exist, it returns None and an empty string
+    """
+    
+    account_data = None
+    username = ""
+    for iterator, key in enumerate(data.keys()):
+        if (iterator == account_number):
+            username = key
+            account_data = data[key]
+            
+    return [account_data, username]
 def delete_accounts(account_folder_path: str, website_number: int):
     """Deletes the json file indicated by website_number
 
