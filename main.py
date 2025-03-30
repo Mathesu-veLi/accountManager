@@ -43,7 +43,7 @@ while True:
                 website_number = utils.custom_validate_number('Enter the number of the site you want to see your account details for: ', files_count)
                     
                 os.system("clear||cls")
-                manage_accounts.read_accounts(accounts_folder_path, website_number)
+                manage_accounts.show_accounts(accounts_folder_path, website_number)
             except FileNotFoundError:
                 print('Register an account to view registered accounts', '\n')
             
