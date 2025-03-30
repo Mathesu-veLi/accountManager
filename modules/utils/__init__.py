@@ -19,12 +19,24 @@ def validate_number(ask):
             print('Enter a valid number!', '\n')
 
 def custom_validate_number(ask, max_number):
+    """Checks if the value is a number between 0 and max_number (inclusive) and returns it if it is
+
+    Args:
+        ask (str): question that will go in the input
+        max_number (int): maximum allowed value
+    Returns:
+        int: number in integer
+    Raises:
+        RuntimeError: if the input is -1
+    """
     while True:
         print()
         number = validate_number(ask)
 
         if number <= max_number and number >= 0:
             return number;
+        if number == -1:
+            raise RuntimeError
 
         print('Enter a valid number!')
         
