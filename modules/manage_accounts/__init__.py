@@ -62,6 +62,18 @@ def show_accounts(account_folder_path: str, website_number: int):
     account_data = get_account(data, account_number)
     show_account(account_data[0], website_name, account_data[1])
 
+def show_account(data, website_name, username):
+    """Shows the account details of a specific user
+    
+    Args:
+        data (dict): Dictionary containing the account data
+        website_name (str): Name of the website where the account was created
+        username (str): Name of the user registered on the site
+    """
+    print('\n', f"{website_name} - {username}".center(55))
+    print(data['email'].ljust(35), end='')
+    print(data['password'].rjust(20), '\n')
+    
 def get_account(data, account_number: int):
     """Retrieves the account data for a specific user
     
@@ -81,6 +93,7 @@ def get_account(data, account_number: int):
             account_data = data[key]
             
     return [account_data, username]
+
 def delete_accounts(account_folder_path: str, website_number: int):
     """Deletes the json file indicated by website_number
 
